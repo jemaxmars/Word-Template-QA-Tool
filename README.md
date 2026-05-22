@@ -1,4 +1,3 @@
-
 # Word Template QA Tool
 
 Created by Jessi Marshall to help streamline the QA process of Word templates within my organization.
@@ -15,13 +14,13 @@ This tool is designed to make it easier and faster to review, test, and validate
 ## Getting Started
 
 1. Install dependencies:
-	```bash
-	npm install
-	```
+   ```bash
+   npm install
+   ```
 2. Start the development server:
-	```bash
-	npm start
-	```
+   ```bash
+   npm start
+   ```
 3. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Running Tests
@@ -77,3 +76,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# Word-Template-QA-Tool
+Streamline and automate the QA process for Word templates. Created by Jessi Marshall.
+>>>>>>> a0ea28b0f85b6430d3d874f4ecde49aebdbfb91b
