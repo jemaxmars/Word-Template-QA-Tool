@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Word-Template-QA-Tool/static/css/main.e6c13ad2.css",
+    "main.js": "/Word-Template-QA-Tool/static/js/main.dea2f51c.js",
+    "static/js/453.d7bb0eb3.chunk.js": "/Word-Template-QA-Tool/static/js/453.d7bb0eb3.chunk.js",
+    "index.html": "/Word-Template-QA-Tool/index.html",
+    "main.e6c13ad2.css.map": "/Word-Template-QA-Tool/static/css/main.e6c13ad2.css.map",
+    "main.dea2f51c.js.map": "/Word-Template-QA-Tool/static/js/main.dea2f51c.js.map",
+    "453.d7bb0eb3.chunk.js.map": "/Word-Template-QA-Tool/static/js/453.d7bb0eb3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.dea2f51c.js"
+  ]
+}
