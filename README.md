@@ -2,6 +2,10 @@
 
 Created by Jessi Marshall to help streamline the QA process of Word templates within my organization.
 
+## Live Demo
+
+Access the hosted app here: [https://jemaxmars.github.io/Word-Template-QA-Tool/](https://jemaxmars.github.io/Word-Template-QA-Tool/)
+
 ## Purpose
 This tool is designed to make it easier and faster to review, test, and validate Word templates, reducing manual effort and improving consistency across documents.
 
@@ -10,6 +14,8 @@ This tool is designed to make it easier and faster to review, test, and validate
 - Automated checks for formatting and content consistency
 - User-friendly interface for QA workflows
 - Designed for internal use to support the document QA process
+- **Automatic schema loading from static file**
+- **Manual schema import fallback UI**
 
 ## Getting Started
 
@@ -22,6 +28,14 @@ This tool is designed to make it easier and faster to review, test, and validate
    npm start
    ```
 3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Schema Loading
+
+- On startup, the app automatically loads all entity schemas from the static file at `public/schemas/schemas.json`.
+- If you need to update schemas, you can either:
+  - Replace the `schemas.json` file with a new version and redeploy, or
+  - Use the “Paste All Schemas” button in the UI to import new schema data (this will override the static file in your browser’s local storage).
+- The manual “Paste All Schemas” and per-entity paste options remain available as a fallback.
 
 ## Running Tests
 
@@ -37,10 +51,6 @@ To create a production build:
 npm run build
 ```
 
-## API Schema Fetching
-
-To ensure the app always uses the latest API schemas, I developed and used a custom QA Schema Fetcher tool. This tool automatically retrieves all relevant API schemas from our system, displaying progress as each schema is fetched. The schemas are then used within the app to validate and QA Word templates against current standards.
-
 ## Author
 Jessi Marshall
 
@@ -52,31 +62,3 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# Word-Template-QA-Tool
-Streamline and automate the QA process for Word templates. Created by Jessi Marshall.
->>>>>>> a0ea28b0f85b6430d3d874f4ecde49aebdbfb91b
