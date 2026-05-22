@@ -1,4 +1,18 @@
+
 import { useState, useRef, useCallback, useEffect } from "react";
+
+// Utility to fetch schemas.json from public folder
+async function fetchStaticSchemas() {
+  try {
+    const res = await fetch(process.env.PUBLIC_URL + "/schemas/schemas.json");
+    if (!res.ok) throw new Error("Failed to fetch schemas.json");
+    const data = await res.json();
+    if (typeof data !== "object" || Array.isArray(data)) throw new Error("Invalid schemas.json format");
+    return data;
+  } catch (e) {
+    return null;
+  }
+}
 
 // ─── Theme ────────────────────────────────────────────────────────────────────
 const C = {
@@ -447,7 +461,7 @@ function SchemaPanel({ schemas, setSchemas }) {
       {!pasteAllMode && loaded.length < ALL_ENTITIES.length && (
         <div style={{ background: C.accentGlow, border: `1px solid ${C.accent}40`, borderRadius: 10, padding: 14, marginBottom: 16, fontSize: 13, color: C.dim, lineHeight: 1.8 }}>
           <strong style={{ color: C.accent }}>How to load all schemas at once:</strong><br />
-          <span style={{ color: C.text }}>1.</span> Download the <strong style={{ color: C.text }}>bookmarklet file</strong> (ask Claude for it — it was generated alongside this app).<br />
+          <span style={{ color: C.text }}>1.</span> Download the <strong style={{ color: C.text }}>bookmarklet file</strong>.<br />
           <span style={{ color: C.text }}>2.</span> In Chrome, go to <strong>Bookmarks → Bookmark Manager</strong>, create a new bookmark, paste the entire bookmarklet code as the URL.<br />
           <span style={{ color: C.text }}>3.</span> Navigate to <code style={{ color: C.accent }}>dev-projectcourage.crm.dynamics.com</code> (any page, just needs to be logged in).<br />
           <span style={{ color: C.text }}>4.</span> Click the bookmarklet — a progress overlay will appear and fetch all 44 schemas automatically.<br />
@@ -726,6 +740,19 @@ export default function App() {
   const [processing, setProcessing] = useState(false);
   const fileRef = useRef();
 
+  // On first load, if schemas are empty, try to fetch from static file
+  useEffect(() => {
+    if (Object.keys(schemas).length === 0) {
+      fetchStaticSchemas().then(data => {
+        if (data && Object.keys(data).length > 0) {
+          setSchemas(data);
+          saveToStorage(LS_SCHEMAS, data);
+        }
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // Re-validate all templates when schemas change
   useEffect(() => {
     if (templates.length === 0) return;
@@ -737,7 +764,7 @@ export default function App() {
       saveToStorage(LS_TEMPLATES, next.map(t => ({ ...t, rawFields: t.rawFields })));
       return next;
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [schemas]);
 
   async function processFiles(files) {
